@@ -1,0 +1,6 @@
+br\ueg\prog\web\ingressocinema\model\cadastroIngresso.class
+br\ueg\prog\web\api\config\ApiWebConfig.class
+br\ueg\prog\web\ingressocinema\Application.class
+br\ueg\prog\web\ingressocinema\dto\ingressoDadosAlteraveisDTO.class
+br\ueg\prog\web\api\config\ApiSwaggerConfig.class
+br\ueg\prog\web\ingressocinema\repository\IngressoRepository.class
