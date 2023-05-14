@@ -23,5 +23,6 @@ public interface ingressoMapper {
 
     public ingressoDTO toIngressoDTO(cadastroIngresso ingresso);
 
-
+    public cadastroIngresso toModelo(ingressoDTO ingresso);
 }
+
