@@ -44,7 +44,7 @@ public class IngressoController {
     @Operation(description = "Metodo Utilizado para alterar")
     public ingressoDTO alterar(@RequestBody() ingressoDadosAlteraveisDTO ingresso, @PathVariable(name = "codigo") Long idCodigo) {
         cadastroIngresso ingressoal = Mapper.toModelo(ingresso);
-        cadastroIngresso alterar = service.alterar(ingressoal);
+        cadastroIngresso alterar = service.alterar(ingressoal, idCodigo);
         return Mapper.toIngressoDTO(alterar);
     }
 
@@ -54,4 +54,12 @@ public class IngressoController {
         cadastroIngresso ingressoExclui = this.service.excluir(idCodigo);
         return Mapper.toIngressoDTO(ingressoExclui);
     }
+
+    @GetMapping(path = "/{IdCodigo}")
+    @Operation(description = "Método utilizado para obter todos os dados por id codigo")
+    public ingressoDTO ObterPorCodigo(@PathVariable(name = "codigo") Long idCodigo) {
+        cadastroIngresso ingressoObter = this.service.obteringressopelocodigo(idCodigo);
+        return this.Mapper.toIngressoDTO(ingressoObter);
+    }
 }
+
