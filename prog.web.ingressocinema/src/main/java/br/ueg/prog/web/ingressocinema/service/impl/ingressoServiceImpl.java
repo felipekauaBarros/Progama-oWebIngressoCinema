@@ -20,6 +20,18 @@ public class ingressoServiceImpl implements ingressoService {
         cadastroIngresso ingressoIncluido = this.gravarDadosIngresso(ingresso);
         return ingressoIncluido;
     }
+
+    @Override
+    public cadastroIngresso alterar(cadastroIngresso ingresso, Long idCodigo) {
+        this.validarCampoObrigatorio(ingresso);
+
+        cadastroIngresso ingressoBancoDados = recuperaougeraerro(idCodigo);
+
+        ingressoBancoDados.setNomeFilme(ingressoBancoDados.getNomeFilme());
+        ingressoBancoDados.setAssentoSala(ingressoBancoDados.getAssentoSala());
+        return ingressoRepository.save(ingresso);
+    }
+
     private cadastroIngresso gravarDadosIngresso(cadastroIngresso ingresso) {
         return ingressoRepository.save(ingresso);
     }
@@ -33,16 +45,14 @@ public class ingressoServiceImpl implements ingressoService {
 
             camposVazios.add("Escolha um assento na Sala de Cinema");
         }
+        if(Strings.isEmpty(ingresso.getNomeCliente())) {
+
+            camposVazios.add("Nome Obrigatório");
+        }
         if(!camposVazios.isEmpty()) {
             throw new IllegalArgumentException("Campos Obrigatórios não preenchidos ("+
                     String.join(",",camposVazios)+")");
         }
-    }
-
-    @Override
-    public cadastroIngresso alterar(cadastroIngresso ingresso) {
-
-        return ingressoRepository.save(ingresso);
     }
 
     @Override
@@ -62,7 +72,17 @@ public class ingressoServiceImpl implements ingressoService {
     }
 
     @Override
-    public List<cadastroIngresso> listarTodos() {
+    public cadastroIngresso obteringressopelocodigo(Long idCodigo) {
+        return this.recuperaougeraerro(idCodigo);
+    }
+
+    @Override
+    public List<cadastroIngresso> localizar(cadastroIngresso ingresso) {
         return null;
+    }
+
+    @Override
+    public List<cadastroIngresso> listarTodos() {
+        return ingressoRepository.findAll();
     }
 }
