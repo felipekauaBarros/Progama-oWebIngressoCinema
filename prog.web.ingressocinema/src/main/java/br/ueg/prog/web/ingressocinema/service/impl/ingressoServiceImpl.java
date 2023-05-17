@@ -64,7 +64,7 @@ public class ingressoServiceImpl implements ingressoService {
 
     private cadastroIngresso recuperaougeraerro(Long idCodigo) {
         cadastroIngresso ingressoBancoDados = ingressoRepository
-                .findCadastroIngressoByidCodigo(idCodigo)
+                .findById(idCodigo)
                 .orElseThrow(
                         () -> new IllegalArgumentException("Erro ao localizar ingresso")
                 );
