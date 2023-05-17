@@ -42,15 +42,19 @@ public class Application {
 			ingresso.setData_horaFilme("14/04/2023 as 20:00h");
 			ingresso.setCategoriaFilme("Ação");
 			ingresso.setNomeFilme("John Wick 4");
-			Optional<cadastroIngresso> ingressoById = ingressoRepository.findCadastroIngressoByidCodigo(ingresso.getIdCodigo());
+			/*Optional<cadastroIngresso> ingressoById = ingressoRepository.findCadastroIngressoByidCodigo(ingresso.getIdCodigo());
 			Integer idCount = ingressoRepository.countId(ingresso.getIdCodigo());
 			if(idCount>0) {
 				System.out.println("Ingresso nao existe");
+			}
+			if(ingressoById.isPresent()){
+				cadastroIngresso ingressoCliente = ingressoById.get();
+				System.out.println("Ingresso pertence: "+ingressoCliente.getNomeCliente());
 			}else {
 				ingressoRepository.save(ingresso);
 			}
-			/*try{
-				ingresso_repository.save(ingresso);
+			try{
+				ingressoRepository.save(ingresso);
 			}catch (Exception e) {
 				e.printStackTrace();
 			}*/
