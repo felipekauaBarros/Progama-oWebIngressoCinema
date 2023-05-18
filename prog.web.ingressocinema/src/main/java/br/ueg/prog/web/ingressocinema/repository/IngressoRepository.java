@@ -8,10 +8,8 @@ import java.util.*;
 @Repository
 public interface IngressoRepository extends JpaRepository<cadastroIngresso, Long> {
 
-    Optional<cadastroIngresso> findCadastroIngressoByidCodigo(long idCodigo);
-    Optional<cadastroIngresso> findCadastroIngressoByassentoSala(String assentosala);
+    Optional<cadastroIngresso> findCadastroIngressoByidCodigo(Long idCodigo);
 
-    @Query(value = "select count(i) from cadastro_ingresso i where i.idCodigo = ;IdExists")
+    @Query(value = "select count(i) from cadastroIngresso i where i.idCodigo = :IdExists")
     Integer countId (Long IdExists);
-
 }
